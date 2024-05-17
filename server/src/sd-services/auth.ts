@@ -367,7 +367,7 @@ export class auth {
     );
     try {
       bh.search = {
-        query: { email: bh.input.body.email },
+        query: { emailc: bh.input.body.email },
         collection: 'users',
       };
       // This is the fix, when adding documents to the DB
@@ -1175,6 +1175,8 @@ export class auth {
       bh.status = 200;
       bh.collection = bh.input.body.collection;
       delete bh.input.body.collection;
+      // const hashedPassword = await bcrypt.hash(bh.input.body['password'], 10);
+      // console.log("bcrypt hashed pass", hashedPassword);
       bh.body = bh.input.body;
 
       console.log('Body', bh.body);
@@ -1229,7 +1231,6 @@ export class auth {
     try {
       bh.search = {
         collection: 'files',
-        filter: { _id: bh.input.body._id },
       };
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_oqDjnw4MPRLCxxh8(bh, parentSpanInst);
