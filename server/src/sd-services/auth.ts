@@ -1485,8 +1485,9 @@ export class auth {
           undefined
         )
       ) {
-        bh = await this.sd_6qVMHKeUosl4rdiS(bh, parentSpanInst);
+        bh = await this.sd_Xx9OmbQs6pyAGNcH(bh, parentSpanInst);
       } else {
+        bh = await this.sd_bO3r8GbizlfNytl2(bh, parentSpanInst);
       }
       this.tracerService.sendData(spanInst, bh);
 
@@ -1502,13 +1503,61 @@ export class auth {
     }
   }
 
-  async sd_6qVMHKeUosl4rdiS(bh, parentSpanInst) {
+  async sd_Xx9OmbQs6pyAGNcH(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_Xx9OmbQs6pyAGNcH',
+      parentSpanInst
+    );
     try {
-      bh.web.res.status(200).send(bh.result);
+      bh.status = 200;
+      bh.resutl = bh.result[0];
+      this.tracerService.sendData(spanInst, bh);
+      await this.sd_mSuUHm7bkW54r7Hn(bh, parentSpanInst);
+      //appendnew_next_sd_Xx9OmbQs6pyAGNcH
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_Xx9OmbQs6pyAGNcH',
+        spanInst,
+        'sd_Xx9OmbQs6pyAGNcH'
+      );
+    }
+  }
+
+  async sd_mSuUHm7bkW54r7Hn(bh, parentSpanInst) {
+    try {
+      bh.web.res.status(bh.status).send(bh.result);
 
       return bh;
     } catch (e) {
-      return await this.errorHandler(bh, e, 'sd_6qVMHKeUosl4rdiS');
+      return await this.errorHandler(bh, e, 'sd_mSuUHm7bkW54r7Hn');
+    }
+  }
+
+  async sd_bO3r8GbizlfNytl2(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_bO3r8GbizlfNytl2',
+      parentSpanInst
+    );
+    try {
+      bh.status = 404;
+      bh.result = {
+        message: 'User not found',
+      };
+      this.tracerService.sendData(spanInst, bh);
+      await this.sd_mSuUHm7bkW54r7Hn(bh, parentSpanInst);
+      //appendnew_next_sd_bO3r8GbizlfNytl2
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_bO3r8GbizlfNytl2',
+        spanInst,
+        'sd_bO3r8GbizlfNytl2'
+      );
     }
   }
 
