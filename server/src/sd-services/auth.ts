@@ -317,6 +317,38 @@ export class auth {
         this.generatedMiddlewares
       )
     );
+
+    this.app['post'](
+      `${this.serviceBasePath}/verification`,
+      cookieParser(),
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'pre',
+        this.generatedMiddlewares
+      ),
+
+      async (req, res, next) => {
+        let bh: any = {};
+        try {
+          bh = this.sdService.__constructDefault(
+            { local: {}, input: {} },
+            req,
+            res,
+            next
+          );
+          let parentSpanInst = null;
+          bh = await this.sd_cNdl8vgocns6VGYF(bh, parentSpanInst);
+          //appendnew_next_sd_9Kx1Odisa7wjtoFP
+        } catch (e) {
+          return await this.errorHandler(bh, e, 'sd_9Kx1Odisa7wjtoFP');
+        }
+      },
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'post',
+        this.generatedMiddlewares
+      )
+    );
     //appendnew_flow_auth_HttpIn
   }
   //   service flows_auth
@@ -367,7 +399,7 @@ export class auth {
     );
     try {
       bh.search = {
-        query: { emailc: bh.input.body.email },
+        query: { email: bh.input.body.email },
         collection: 'users',
       };
       // This is the fix, when adding documents to the DB
@@ -1172,11 +1204,13 @@ export class auth {
       parentSpanInst
     );
     try {
+      const bcrypt = require('bcrypt');
       bh.status = 200;
       bh.collection = bh.input.body.collection;
       delete bh.input.body.collection;
-      // const hashedPassword = await bcrypt.hash(bh.input.body['password'], 10);
-      // console.log("bcrypt hashed pass", hashedPassword);
+      const hashedPassword = await bcrypt.hash(bh.input.body['password'], 10);
+      console.log('bcrypt hashed pass', hashedPassword);
+      bh.input.body['password'] = hashedPassword;
       bh.body = bh.input.body;
 
       console.log('Body', bh.body);
@@ -1385,6 +1419,96 @@ export class auth {
         spanInst,
         'sd_zB6RCba7lqBpwZY5'
       );
+    }
+  }
+
+  async sd_cNdl8vgocns6VGYF(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_cNdl8vgocns6VGYF',
+      parentSpanInst
+    );
+    try {
+      bh.search = {
+        query: { idNumber: bh.input.body.idNumber },
+        collection: 'users',
+      };
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_bI1YIRnJGh4Fglcx(bh, parentSpanInst);
+      //appendnew_next_sd_cNdl8vgocns6VGYF
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_cNdl8vgocns6VGYF',
+        spanInst,
+        'sd_cNdl8vgocns6VGYF'
+      );
+    }
+  }
+
+  async sd_bI1YIRnJGh4Fglcx(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_bI1YIRnJGh4Fglcx',
+      parentSpanInst
+    );
+    try {
+      let outputVariables = await this.checkIfExist(spanInst, bh.search);
+      bh.result = outputVariables.local.result;
+
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_WmdNO4n9TGzzjxTz(bh, parentSpanInst);
+      //appendnew_next_sd_bI1YIRnJGh4Fglcx
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_bI1YIRnJGh4Fglcx',
+        spanInst,
+        'sd_bI1YIRnJGh4Fglcx'
+      );
+    }
+  }
+
+  async sd_WmdNO4n9TGzzjxTz(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_WmdNO4n9TGzzjxTz',
+      parentSpanInst
+    );
+    try {
+      if (
+        this.sdService.operators['nempty'](
+          bh.result,
+          undefined,
+          undefined,
+          undefined
+        )
+      ) {
+        bh = await this.sd_6qVMHKeUosl4rdiS(bh, parentSpanInst);
+      } else {
+      }
+      this.tracerService.sendData(spanInst, bh);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_WmdNO4n9TGzzjxTz',
+        spanInst,
+        'sd_WmdNO4n9TGzzjxTz'
+      );
+    }
+  }
+
+  async sd_6qVMHKeUosl4rdiS(bh, parentSpanInst) {
+    try {
+      bh.web.res.status(200).send(bh.result);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_6qVMHKeUosl4rdiS');
     }
   }
 
