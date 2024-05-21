@@ -1759,7 +1759,7 @@ export class auth {
     `,
       };
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_5MqBi2KzB9oQr6Rs(bh, parentSpanInst);
+      bh = await this.sd_bJy17l51susoCvR6(bh, parentSpanInst);
       //appendnew_next_sd_wWhmgroqpanAcOha
       return bh;
     } catch (e) {
@@ -1769,6 +1769,63 @@ export class auth {
         'sd_wWhmgroqpanAcOha',
         spanInst,
         'sd_wWhmgroqpanAcOha'
+      );
+    }
+  }
+
+  async sd_bJy17l51susoCvR6(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_bJy17l51susoCvR6',
+      parentSpanInst
+    );
+    try {
+      let mailConfigObj = this.sdService.getConfigObj(
+        'emailout-config',
+        'sd_Y7tj22emRRoCDJdJ'
+      );
+      let server = mailConfigObj.server;
+      let port = mailConfigObj.port;
+      let secure = mailConfigObj.secure;
+      let tls = mailConfigObj.tls;
+      let userid = mailConfigObj.userid;
+      let password = mailConfigObj.password;
+      let emailServiceInstance = EmailOutService.getInstance();
+      bh.result = await emailServiceInstance.sendEmail(
+        {
+          server,
+          port,
+          secure,
+          tls,
+        },
+        {
+          userid,
+          password,
+          to: bh.payload.to,
+          subject: bh.payload.subject,
+          body: undefined,
+          cc: undefined,
+          bcc: undefined,
+          from: bh.payload.from,
+          html: bh.payload.ptag,
+          iCal: undefined,
+          routingOptions: undefined,
+          contentOptions: undefined,
+          securityOptions: undefined,
+          headerOptions: undefined,
+          attachments: undefined,
+        }
+      );
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_5MqBi2KzB9oQr6Rs(bh, parentSpanInst);
+      //appendnew_next_sd_bJy17l51susoCvR6
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_bJy17l51susoCvR6',
+        spanInst,
+        'sd_bJy17l51susoCvR6'
       );
     }
   }
