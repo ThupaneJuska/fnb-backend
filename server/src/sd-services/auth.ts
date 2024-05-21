@@ -349,6 +349,38 @@ export class auth {
         this.generatedMiddlewares
       )
     );
+
+    this.app['delete'](
+      `${this.serviceBasePath}/delete`,
+      cookieParser(),
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'pre',
+        this.generatedMiddlewares
+      ),
+
+      async (req, res, next) => {
+        let bh: any = {};
+        try {
+          bh = this.sdService.__constructDefault(
+            { local: {}, input: {} },
+            req,
+            res,
+            next
+          );
+          let parentSpanInst = null;
+          bh = await this.sd_uq4lLunC71aFlNkj(bh, parentSpanInst);
+          //appendnew_next_sd_hJdVW1jU3bQAeK05
+        } catch (e) {
+          return await this.errorHandler(bh, e, 'sd_hJdVW1jU3bQAeK05');
+        }
+      },
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'post',
+        this.generatedMiddlewares
+      )
+    );
     //appendnew_flow_auth_HttpIn
   }
   //   service flows_auth
@@ -1512,7 +1544,7 @@ export class auth {
       bh.status = 200;
       bh.resutl = bh.result[0];
       this.tracerService.sendData(spanInst, bh);
-      await this.sd_mSuUHm7bkW54r7Hn(bh, parentSpanInst);
+      await this.sd_t1e1KrE9R6WnqI7A(bh, parentSpanInst);
       //appendnew_next_sd_Xx9OmbQs6pyAGNcH
       return bh;
     } catch (e) {
@@ -1526,13 +1558,13 @@ export class auth {
     }
   }
 
-  async sd_mSuUHm7bkW54r7Hn(bh, parentSpanInst) {
+  async sd_t1e1KrE9R6WnqI7A(bh, parentSpanInst) {
     try {
       bh.web.res.status(bh.status).send(bh.result);
 
       return bh;
     } catch (e) {
-      return await this.errorHandler(bh, e, 'sd_mSuUHm7bkW54r7Hn');
+      return await this.errorHandler(bh, e, 'sd_t1e1KrE9R6WnqI7A');
     }
   }
 
@@ -1542,12 +1574,12 @@ export class auth {
       parentSpanInst
     );
     try {
-      bh.status = 404;
+      bh.status = 200;
       bh.result = {
         message: 'User not found',
       };
       this.tracerService.sendData(spanInst, bh);
-      await this.sd_mSuUHm7bkW54r7Hn(bh, parentSpanInst);
+      await this.sd_t1e1KrE9R6WnqI7A(bh, parentSpanInst);
       //appendnew_next_sd_bO3r8GbizlfNytl2
       return bh;
     } catch (e) {
@@ -1558,6 +1590,69 @@ export class auth {
         spanInst,
         'sd_bO3r8GbizlfNytl2'
       );
+    }
+  }
+
+  async sd_uq4lLunC71aFlNkj(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_uq4lLunC71aFlNkj',
+      parentSpanInst
+    );
+    try {
+      bh.collection = bh.input.body.collection;
+      bh.filter = { email: bh.input.body['email'] };
+      delete bh.input.body.collection;
+      console.log('Deleted collection', delete bh.input.body.collection);
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_1ts6hALc1iwxyBRz(bh, parentSpanInst);
+      //appendnew_next_sd_uq4lLunC71aFlNkj
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_uq4lLunC71aFlNkj',
+        spanInst,
+        'sd_uq4lLunC71aFlNkj'
+      );
+    }
+  }
+
+  async sd_1ts6hALc1iwxyBRz(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_1ts6hALc1iwxyBRz',
+      parentSpanInst
+    );
+    try {
+      bh.result = await MongoPersistance.getInstance().deleteOne(
+        'sd_ajFrSs3mQRYSN97Z',
+        bh.collection,
+        bh.filter,
+        bh.option,
+        bh.option
+      );
+      this.tracerService.sendData(spanInst, bh);
+      await this.sd_EMPlfSvHonePZJWc(bh, parentSpanInst);
+      //appendnew_next_sd_1ts6hALc1iwxyBRz
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_1ts6hALc1iwxyBRz',
+        spanInst,
+        'sd_1ts6hALc1iwxyBRz'
+      );
+    }
+  }
+
+  async sd_EMPlfSvHonePZJWc(bh, parentSpanInst) {
+    try {
+      bh.web.res.status(200).send(bh.result);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_EMPlfSvHonePZJWc');
     }
   }
 
