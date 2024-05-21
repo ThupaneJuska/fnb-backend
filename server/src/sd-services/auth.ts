@@ -381,6 +381,38 @@ export class auth {
         this.generatedMiddlewares
       )
     );
+
+    this.app['put'](
+      `${this.serviceBasePath}/status`,
+      cookieParser(),
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'pre',
+        this.generatedMiddlewares
+      ),
+
+      async (req, res, next) => {
+        let bh: any = {};
+        try {
+          bh = this.sdService.__constructDefault(
+            { local: {}, input: {} },
+            req,
+            res,
+            next
+          );
+          let parentSpanInst = null;
+          bh = await this.sd_lZSWfxDNEl6yCKxM(bh, parentSpanInst);
+          //appendnew_next_sd_6CyS8TPipEXGaJLU
+        } catch (e) {
+          return await this.errorHandler(bh, e, 'sd_6CyS8TPipEXGaJLU');
+        }
+      },
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'post',
+        this.generatedMiddlewares
+      )
+    );
     //appendnew_flow_auth_HttpIn
   }
   //   service flows_auth
@@ -1653,6 +1685,112 @@ export class auth {
       return bh;
     } catch (e) {
       return await this.errorHandler(bh, e, 'sd_EMPlfSvHonePZJWc');
+    }
+  }
+
+  async sd_lZSWfxDNEl6yCKxM(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_lZSWfxDNEl6yCKxM',
+      parentSpanInst
+    );
+    try {
+      bh.collection = bh.input.body.collection;
+      bh.filter = { email: bh.input.body['email'] };
+
+      delete bh.input.body.collection;
+
+      bh.body = { $set: bh.input.body };
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_svRXiAApQWbrqqla(bh, parentSpanInst);
+      //appendnew_next_sd_lZSWfxDNEl6yCKxM
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_lZSWfxDNEl6yCKxM',
+        spanInst,
+        'sd_lZSWfxDNEl6yCKxM'
+      );
+    }
+  }
+
+  async sd_svRXiAApQWbrqqla(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_svRXiAApQWbrqqla',
+      parentSpanInst
+    );
+    try {
+      bh.result = await MongoPersistance.getInstance().findOneAndUpdate(
+        'sd_ajFrSs3mQRYSN97Z',
+        bh.collection,
+        bh.filter,
+        bh.body,
+        bh.option,
+        bh.option
+      );
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_wWhmgroqpanAcOha(bh, parentSpanInst);
+      //appendnew_next_sd_svRXiAApQWbrqqla
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_svRXiAApQWbrqqla',
+        spanInst,
+        'sd_svRXiAApQWbrqqla'
+      );
+    }
+  }
+
+  async sd_wWhmgroqpanAcOha(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_wWhmgroqpanAcOha',
+      parentSpanInst
+    );
+    try {
+      bh.payload = {
+        to: bh.result.value.email,
+        subject: 'FNB ACCOUNT',
+        from: 'FNB',
+        ptag: `<p>Your Application Has been Approved</p>
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/80/First_National_Bank_Logo.svg/1200px-First_National_Bank_Logo.svg.png" alt="Example Image" width="250" height="100"  class="image">
+    `,
+      };
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_5MqBi2KzB9oQr6Rs(bh, parentSpanInst);
+      //appendnew_next_sd_wWhmgroqpanAcOha
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_wWhmgroqpanAcOha',
+        spanInst,
+        'sd_wWhmgroqpanAcOha'
+      );
+    }
+  }
+
+  async sd_5MqBi2KzB9oQr6Rs(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_5MqBi2KzB9oQr6Rs',
+      parentSpanInst
+    );
+    try {
+      console.log('Found user', bh.result.value.email);
+      this.tracerService.sendData(spanInst, bh);
+      //appendnew_next_sd_5MqBi2KzB9oQr6Rs
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_5MqBi2KzB9oQr6Rs',
+        spanInst,
+        'sd_5MqBi2KzB9oQr6Rs'
+      );
     }
   }
 
