@@ -1078,7 +1078,7 @@ export class auth {
     try {
       bh.search = {
         query: { email: bh.input.body.email },
-        collection: 'Admins',
+        collection: 'users',
       };
 
       bh.input.body['_id'] = new Date().getTime();
@@ -2100,13 +2100,13 @@ export class auth {
   async verifyOtp(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan('verifyOtp', parentSpanInst);
     try {
-      console.log('bh.result[0]', bh.result[0]);
-      if (bh.result[0].OTP === bh.body.otp) {
-        console.log('match');
+      if (bh.result[0].OTP === bh.input.body.otp) {
+        bh.isCorrectOtp = true;
       } else {
-        console.log('not match');
+        bh.isCorrectOtp = false;
       }
       this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_QoNkAjuCGfaNYXDh(bh, parentSpanInst);
       //appendnew_next_verifyOtp
       return bh;
     } catch (e) {
@@ -2116,6 +2116,94 @@ export class auth {
         'sd_vuCpnEfeDErUk41b',
         spanInst,
         'verifyOtp'
+      );
+    }
+  }
+
+  async sd_QoNkAjuCGfaNYXDh(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_QoNkAjuCGfaNYXDh',
+      parentSpanInst
+    );
+    try {
+      if (
+        this.sdService.operators['true'](
+          bh.isCorrectOtp,
+          undefined,
+          undefined,
+          undefined
+        )
+      ) {
+        bh = await this.sd_09u3nrSak6acL8NK(bh, parentSpanInst);
+      } else {
+        bh = await this.sd_a9iRk9LLwUR7SVIi(bh, parentSpanInst);
+      }
+      this.tracerService.sendData(spanInst, bh);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_QoNkAjuCGfaNYXDh',
+        spanInst,
+        'sd_QoNkAjuCGfaNYXDh'
+      );
+    }
+  }
+
+  async sd_09u3nrSak6acL8NK(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_09u3nrSak6acL8NK',
+      parentSpanInst
+    );
+    try {
+      bh.result = {};
+      this.tracerService.sendData(spanInst, bh);
+      await this.sd_lK8sdqY5op4XM98w(bh, parentSpanInst);
+      //appendnew_next_sd_09u3nrSak6acL8NK
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_09u3nrSak6acL8NK',
+        spanInst,
+        'sd_09u3nrSak6acL8NK'
+      );
+    }
+  }
+
+  async sd_lK8sdqY5op4XM98w(bh, parentSpanInst) {
+    try {
+      bh.web.res.status(200).send(bh.result);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_lK8sdqY5op4XM98w');
+    }
+  }
+
+  async sd_a9iRk9LLwUR7SVIi(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_a9iRk9LLwUR7SVIi',
+      parentSpanInst
+    );
+    try {
+      bh.result = {
+        message: 'OTP not match',
+      };
+      this.tracerService.sendData(spanInst, bh);
+      await this.sd_lK8sdqY5op4XM98w(bh, parentSpanInst);
+      //appendnew_next_sd_a9iRk9LLwUR7SVIi
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_a9iRk9LLwUR7SVIi',
+        spanInst,
+        'sd_a9iRk9LLwUR7SVIi'
       );
     }
   }
@@ -2141,16 +2229,6 @@ export class auth {
         spanInst,
         'sd_XKNseNpxyuKrmvFk'
       );
-    }
-  }
-
-  async sd_lK8sdqY5op4XM98w(bh, parentSpanInst) {
-    try {
-      bh.web.res.status(200).send(bh.result);
-
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(bh, e, 'sd_lK8sdqY5op4XM98w');
     }
   }
 
