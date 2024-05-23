@@ -92,7 +92,7 @@
         "winston-daily-rotate-file": "4.7.1",
         "xml2js": "0.6.2"
     },
-    "scripts": { 
+    "scripts": {
         "tsc": "tsc",
         "start": "npm run node-prod",
         "startserver": "set debug=* && ts-node-dev --inspect --respawn --transpile-only ./src/index.ts",
