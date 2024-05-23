@@ -445,6 +445,70 @@ export class auth {
         this.generatedMiddlewares
       )
     );
+
+    this.app['get'](
+      `${this.serviceBasePath}/get-users`,
+      cookieParser(),
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'pre',
+        this.generatedMiddlewares
+      ),
+
+      async (req, res, next) => {
+        let bh: any = {};
+        try {
+          bh = this.sdService.__constructDefault(
+            { local: {}, input: {} },
+            req,
+            res,
+            next
+          );
+          let parentSpanInst = null;
+          bh = await this.sd_xcAfNpkho3zxE0fr(bh, parentSpanInst);
+          //appendnew_next_sd_2AwmFR6x98aa2X6g
+        } catch (e) {
+          return await this.errorHandler(bh, e, 'sd_2AwmFR6x98aa2X6g');
+        }
+      },
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'post',
+        this.generatedMiddlewares
+      )
+    );
+
+    this.app['post'](
+      `${this.serviceBasePath}/login`,
+      cookieParser(),
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'pre',
+        this.generatedMiddlewares
+      ),
+
+      async (req, res, next) => {
+        let bh: any = {};
+        try {
+          bh = this.sdService.__constructDefault(
+            { local: {}, input: {} },
+            req,
+            res,
+            next
+          );
+          let parentSpanInst = null;
+          bh = await this.sd_4VSJb3LCKqzWPHzs(bh, parentSpanInst);
+          //appendnew_next_sd_oBsUxswjTcgMgsLh
+        } catch (e) {
+          return await this.errorHandler(bh, e, 'sd_oBsUxswjTcgMgsLh');
+        }
+      },
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'post',
+        this.generatedMiddlewares
+      )
+    );
     //appendnew_flow_auth_HttpIn
   }
   //   service flows_auth
@@ -2228,6 +2292,354 @@ export class auth {
         'sd_XKNseNpxyuKrmvFk',
         spanInst,
         'sd_XKNseNpxyuKrmvFk'
+      );
+    }
+  }
+
+  async sd_xcAfNpkho3zxE0fr(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_xcAfNpkho3zxE0fr',
+      parentSpanInst
+    );
+    try {
+      bh.search = {
+        collection: 'users',
+      };
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_hxDacUzGo640XwXu(bh, parentSpanInst);
+      //appendnew_next_sd_xcAfNpkho3zxE0fr
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_xcAfNpkho3zxE0fr',
+        spanInst,
+        'sd_xcAfNpkho3zxE0fr'
+      );
+    }
+  }
+
+  async sd_hxDacUzGo640XwXu(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_hxDacUzGo640XwXu',
+      parentSpanInst
+    );
+    try {
+      let outputVariables = await this.checkIfExist(spanInst, bh.search);
+      bh.result = outputVariables.local.result;
+
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_WxDaZehPH5cGjHMI(bh, parentSpanInst);
+      //appendnew_next_sd_hxDacUzGo640XwXu
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_hxDacUzGo640XwXu',
+        spanInst,
+        'sd_hxDacUzGo640XwXu'
+      );
+    }
+  }
+
+  async sd_WxDaZehPH5cGjHMI(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_WxDaZehPH5cGjHMI',
+      parentSpanInst
+    );
+    try {
+      if (
+        this.sdService.operators['nempty'](
+          bh.result,
+          undefined,
+          undefined,
+          undefined
+        )
+      ) {
+        bh = await this.sd_WWVKD7LbhtIxKgql(bh, parentSpanInst);
+      } else {
+        bh = await this.sd_WFsB4vp8wP0Uc0jf(bh, parentSpanInst);
+      }
+      this.tracerService.sendData(spanInst, bh);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_WxDaZehPH5cGjHMI',
+        spanInst,
+        'sd_WxDaZehPH5cGjHMI'
+      );
+    }
+  }
+
+  async sd_WWVKD7LbhtIxKgql(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_WWVKD7LbhtIxKgql',
+      parentSpanInst
+    );
+    try {
+      bh.status = 200;
+      bh.result = bh.result;
+      this.tracerService.sendData(spanInst, bh);
+      await this.sd_AfeVe46h74IT3M4P(bh, parentSpanInst);
+      //appendnew_next_sd_WWVKD7LbhtIxKgql
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_WWVKD7LbhtIxKgql',
+        spanInst,
+        'sd_WWVKD7LbhtIxKgql'
+      );
+    }
+  }
+
+  async sd_AfeVe46h74IT3M4P(bh, parentSpanInst) {
+    try {
+      bh.web.res.status(bh.status).send(bh.result);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_AfeVe46h74IT3M4P');
+    }
+  }
+
+  async sd_WFsB4vp8wP0Uc0jf(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_WFsB4vp8wP0Uc0jf',
+      parentSpanInst
+    );
+    try {
+      bh.status = 404;
+
+      this.tracerService.sendData(spanInst, bh);
+      await this.sd_AfeVe46h74IT3M4P(bh, parentSpanInst);
+      //appendnew_next_sd_WFsB4vp8wP0Uc0jf
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_WFsB4vp8wP0Uc0jf',
+        spanInst,
+        'sd_WFsB4vp8wP0Uc0jf'
+      );
+    }
+  }
+
+  async sd_4VSJb3LCKqzWPHzs(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_4VSJb3LCKqzWPHzs',
+      parentSpanInst
+    );
+    try {
+      bh.search = {
+        query: { email: bh.input.body.email },
+        collection: 'users',
+      };
+      console.log('bh.input.params', bh.input.params);
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_MBNgweWW8QJ3gy96(bh, parentSpanInst);
+      //appendnew_next_sd_4VSJb3LCKqzWPHzs
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_4VSJb3LCKqzWPHzs',
+        spanInst,
+        'sd_4VSJb3LCKqzWPHzs'
+      );
+    }
+  }
+
+  async sd_MBNgweWW8QJ3gy96(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_MBNgweWW8QJ3gy96',
+      parentSpanInst
+    );
+    try {
+      let outputVariables = await this.checkIfExist(spanInst, bh.search);
+      bh.result = outputVariables.local.result;
+
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_OB6tUkmwnYkYgBt8(bh, parentSpanInst);
+      //appendnew_next_sd_MBNgweWW8QJ3gy96
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_MBNgweWW8QJ3gy96',
+        spanInst,
+        'sd_MBNgweWW8QJ3gy96'
+      );
+    }
+  }
+
+  async sd_OB6tUkmwnYkYgBt8(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_OB6tUkmwnYkYgBt8',
+      parentSpanInst
+    );
+    try {
+      if (
+        this.sdService.operators['nempty'](
+          bh.result,
+          undefined,
+          undefined,
+          undefined
+        )
+      ) {
+        bh = await this.sd_FllQj01ptdt9LAnU(bh, parentSpanInst);
+      } else {
+        bh = await this.sd_Gznm98dxQtDk93Lf(bh, parentSpanInst);
+      }
+      this.tracerService.sendData(spanInst, bh);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_OB6tUkmwnYkYgBt8',
+        spanInst,
+        'sd_OB6tUkmwnYkYgBt8'
+      );
+    }
+  }
+
+  async sd_FllQj01ptdt9LAnU(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_FllQj01ptdt9LAnU',
+      parentSpanInst
+    );
+    try {
+      const bcrypt = require('bcrypt');
+      bh.result = bh.result[0];
+      bh.match = await bcrypt.compare(
+        bh.input.body.password,
+        bh.result.password
+      );
+
+      console.log('BH Match', bh.match);
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_TOURp9qKIevsDjjf(bh, parentSpanInst);
+      //appendnew_next_sd_FllQj01ptdt9LAnU
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_FllQj01ptdt9LAnU',
+        spanInst,
+        'sd_FllQj01ptdt9LAnU'
+      );
+    }
+  }
+
+  async sd_TOURp9qKIevsDjjf(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_TOURp9qKIevsDjjf',
+      parentSpanInst
+    );
+    try {
+      if (
+        this.sdService.operators['true'](
+          bh.match,
+          undefined,
+          undefined,
+          undefined
+        )
+      ) {
+        bh = await this.sd_QxCZmhDNfRBIwHKA(bh, parentSpanInst);
+      } else {
+        bh = await this.sd_0qZG0chn6JnJPErO(bh, parentSpanInst);
+      }
+      this.tracerService.sendData(spanInst, bh);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_TOURp9qKIevsDjjf',
+        spanInst,
+        'sd_TOURp9qKIevsDjjf'
+      );
+    }
+  }
+
+  async sd_QxCZmhDNfRBIwHKA(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_QxCZmhDNfRBIwHKA',
+      parentSpanInst
+    );
+    try {
+      bh.status = 200;
+      console.log('Match match');
+      this.tracerService.sendData(spanInst, bh);
+      //appendnew_next_sd_QxCZmhDNfRBIwHKA
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_QxCZmhDNfRBIwHKA',
+        spanInst,
+        'sd_QxCZmhDNfRBIwHKA'
+      );
+    }
+  }
+
+  async sd_0qZG0chn6JnJPErO(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_0qZG0chn6JnJPErO',
+      parentSpanInst
+    );
+    try {
+      bh.status = 404;
+      bh.result = {
+        message: "PASSWORD DON'T MATCH",
+      };
+      console.log('NO Match match');
+
+      this.tracerService.sendData(spanInst, bh);
+      //appendnew_next_sd_0qZG0chn6JnJPErO
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_0qZG0chn6JnJPErO',
+        spanInst,
+        'sd_0qZG0chn6JnJPErO'
+      );
+    }
+  }
+
+  async sd_Gznm98dxQtDk93Lf(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_Gznm98dxQtDk93Lf',
+      parentSpanInst
+    );
+    try {
+      console.log('Error Error');
+      this.tracerService.sendData(spanInst, bh);
+      //appendnew_next_sd_Gznm98dxQtDk93Lf
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_Gznm98dxQtDk93Lf',
+        spanInst,
+        'sd_Gznm98dxQtDk93Lf'
       );
     }
   }
