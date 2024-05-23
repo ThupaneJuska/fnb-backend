@@ -445,6 +445,134 @@ export class auth {
         this.generatedMiddlewares
       )
     );
+
+    this.app['put'](
+      `${this.serviceBasePath}/update-limits`,
+      cookieParser(),
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'pre',
+        this.generatedMiddlewares
+      ),
+
+      async (req, res, next) => {
+        let bh: any = {};
+        try {
+          bh = this.sdService.__constructDefault(
+            { local: {}, input: {} },
+            req,
+            res,
+            next
+          );
+          let parentSpanInst = null;
+          bh = await this.sd_0ujcK8Bl2aLCAc5h(bh, parentSpanInst);
+          //appendnew_next_sd_z9MWxCq8ucpGQpi8
+        } catch (e) {
+          return await this.errorHandler(bh, e, 'sd_z9MWxCq8ucpGQpi8');
+        }
+      },
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'post',
+        this.generatedMiddlewares
+      )
+    );
+
+    this.app['post'](
+      `${this.serviceBasePath}/create-limits:email`,
+      cookieParser(),
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'pre',
+        this.generatedMiddlewares
+      ),
+
+      async (req, res, next) => {
+        let bh: any = {};
+        try {
+          bh = this.sdService.__constructDefault(
+            { local: {}, input: {} },
+            req,
+            res,
+            next
+          );
+          let parentSpanInst = null;
+          bh = await this.sd_Z6HfxOIVaC8Yv6JC(bh, parentSpanInst);
+          //appendnew_next_sd_Wn5nQAXPTyyMFhWe
+        } catch (e) {
+          return await this.errorHandler(bh, e, 'sd_Wn5nQAXPTyyMFhWe');
+        }
+      },
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'post',
+        this.generatedMiddlewares
+      )
+    );
+
+    this.app['get'](
+      `${this.serviceBasePath}/get-limits:email`,
+      cookieParser(),
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'pre',
+        this.generatedMiddlewares
+      ),
+
+      async (req, res, next) => {
+        let bh: any = {};
+        try {
+          bh = this.sdService.__constructDefault(
+            { local: {}, input: {} },
+            req,
+            res,
+            next
+          );
+          let parentSpanInst = null;
+          bh = await this.sd_wIp15FDvAVY5LJhA(bh, parentSpanInst);
+          //appendnew_next_sd_FBb2YhAllxfK5ToF
+        } catch (e) {
+          return await this.errorHandler(bh, e, 'sd_FBb2YhAllxfK5ToF');
+        }
+      },
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'post',
+        this.generatedMiddlewares
+      )
+    );
+
+    this.app['post'](
+      `${this.serviceBasePath}/send-application-email`,
+      cookieParser(),
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'pre',
+        this.generatedMiddlewares
+      ),
+
+      async (req, res, next) => {
+        let bh: any = {};
+        try {
+          bh = this.sdService.__constructDefault(
+            { local: {}, input: {} },
+            req,
+            res,
+            next
+          );
+          let parentSpanInst = null;
+          bh = await this.sd_K6SeCiHfk7UWWoQi(bh, parentSpanInst);
+          //appendnew_next_sd_uxWhPOBDSYtSXJM9
+        } catch (e) {
+          return await this.errorHandler(bh, e, 'sd_uxWhPOBDSYtSXJM9');
+        }
+      },
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'post',
+        this.generatedMiddlewares
+      )
+    );
     //appendnew_flow_auth_HttpIn
   }
   //   service flows_auth
@@ -2024,8 +2152,6 @@ export class auth {
         query: { email: bh.input.body.email },
         collection: 'users',
       };
-
-      bh.newPassword = bh.input.body.newPassword;
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_3OZmy2peMJivw44w(bh, parentSpanInst);
       //appendnew_next_sd_mh91bhVNziPCCusO
@@ -2229,6 +2355,296 @@ export class auth {
         spanInst,
         'sd_XKNseNpxyuKrmvFk'
       );
+    }
+  }
+
+  async sd_0ujcK8Bl2aLCAc5h(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_0ujcK8Bl2aLCAc5h',
+      parentSpanInst
+    );
+    try {
+      bh.filter = { email: bh.input.body.email };
+      bh.body = { $set: bh.input.body };
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_K34W71iy2LJyjqa8(bh, parentSpanInst);
+      //appendnew_next_sd_0ujcK8Bl2aLCAc5h
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_0ujcK8Bl2aLCAc5h',
+        spanInst,
+        'sd_0ujcK8Bl2aLCAc5h'
+      );
+    }
+  }
+
+  async sd_K34W71iy2LJyjqa8(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_K34W71iy2LJyjqa8',
+      parentSpanInst
+    );
+    try {
+      bh.result = await MongoPersistance.getInstance().findOneAndUpdate(
+        'sd_ajFrSs3mQRYSN97Z',
+        'limits',
+        bh.filter,
+        bh.body,
+        bh.option,
+        bh.option
+      );
+      this.tracerService.sendData(spanInst, bh);
+      await this.sd_9JCGjmbFzLuciwI6(bh, parentSpanInst);
+      //appendnew_next_sd_K34W71iy2LJyjqa8
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_K34W71iy2LJyjqa8',
+        spanInst,
+        'sd_K34W71iy2LJyjqa8'
+      );
+    }
+  }
+
+  async sd_9JCGjmbFzLuciwI6(bh, parentSpanInst) {
+    try {
+      bh.web.res.status(200).send(bh.result);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_9JCGjmbFzLuciwI6');
+    }
+  }
+
+  async sd_Z6HfxOIVaC8Yv6JC(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_Z6HfxOIVaC8Yv6JC',
+      parentSpanInst
+    );
+    try {
+      bh.body = {
+        email: bh.input.params.email,
+        tranfers: 500000,
+        payments: 350000,
+        payAndClear: 350000,
+        prepaid: 1000,
+        sendMoney: 3000,
+        vouchers: 1000,
+        cardlessWithdrawal: 1500,
+        _id: new Date().getTime(),
+      };
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_JuoeZTwuDUAQwlcz(bh, parentSpanInst);
+      //appendnew_next_sd_Z6HfxOIVaC8Yv6JC
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_Z6HfxOIVaC8Yv6JC',
+        spanInst,
+        'sd_Z6HfxOIVaC8Yv6JC'
+      );
+    }
+  }
+
+  async sd_JuoeZTwuDUAQwlcz(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_JuoeZTwuDUAQwlcz',
+      parentSpanInst
+    );
+    try {
+      bh.result = await MongoPersistance.getInstance().insertOne(
+        'sd_ajFrSs3mQRYSN97Z',
+        'limits',
+        bh.body,
+        bh.option,
+        bh.option
+      );
+      this.tracerService.sendData(spanInst, bh);
+      await this.sd_a4Qox2lyJjOCJ1qY(bh, parentSpanInst);
+      //appendnew_next_sd_JuoeZTwuDUAQwlcz
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_JuoeZTwuDUAQwlcz',
+        spanInst,
+        'sd_JuoeZTwuDUAQwlcz'
+      );
+    }
+  }
+
+  async sd_a4Qox2lyJjOCJ1qY(bh, parentSpanInst) {
+    try {
+      bh.web.res.status(200).send(bh.result);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_a4Qox2lyJjOCJ1qY');
+    }
+  }
+
+  async sd_wIp15FDvAVY5LJhA(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_wIp15FDvAVY5LJhA',
+      parentSpanInst
+    );
+    try {
+      bh.filter = { email: bh.input.params.email };
+      console.log('bh.filter', bh.filter);
+
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_REVs02xM2rXNISXA(bh, parentSpanInst);
+      //appendnew_next_sd_wIp15FDvAVY5LJhA
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_wIp15FDvAVY5LJhA',
+        spanInst,
+        'sd_wIp15FDvAVY5LJhA'
+      );
+    }
+  }
+
+  async sd_REVs02xM2rXNISXA(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_REVs02xM2rXNISXA',
+      parentSpanInst
+    );
+    try {
+      bh.result = await MongoPersistance.getInstance().find(
+        'sd_ajFrSs3mQRYSN97Z',
+        'limits',
+        bh.filter,
+        bh.option,
+        bh.option
+      );
+      this.tracerService.sendData(spanInst, bh);
+      await this.sd_iuU32BmkRk80fbXn(bh, parentSpanInst);
+      //appendnew_next_sd_REVs02xM2rXNISXA
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_REVs02xM2rXNISXA',
+        spanInst,
+        'sd_REVs02xM2rXNISXA'
+      );
+    }
+  }
+
+  async sd_iuU32BmkRk80fbXn(bh, parentSpanInst) {
+    try {
+      bh.web.res.status(200).send(bh.result);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_iuU32BmkRk80fbXn');
+    }
+  }
+
+  async sd_K6SeCiHfk7UWWoQi(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_K6SeCiHfk7UWWoQi',
+      parentSpanInst
+    );
+    try {
+      bh.payload = {
+        to: bh.input.body.email,
+        subject: bh.input.body.subject,
+        from: 'FNB',
+        ptag: `<p>${bh.input.body.message}</p>
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/80/First_National_Bank_Logo.svg/1200px-First_National_Bank_Logo.svg.png" alt="Example Image" width="250" height="100"  class="image">
+    `,
+      };
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_YzFYFO3W9YNHvTQs(bh, parentSpanInst);
+      //appendnew_next_sd_K6SeCiHfk7UWWoQi
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_K6SeCiHfk7UWWoQi',
+        spanInst,
+        'sd_K6SeCiHfk7UWWoQi'
+      );
+    }
+  }
+
+  async sd_YzFYFO3W9YNHvTQs(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_YzFYFO3W9YNHvTQs',
+      parentSpanInst
+    );
+    try {
+      let mailConfigObj = this.sdService.getConfigObj(
+        'emailout-config',
+        'sd_Y7tj22emRRoCDJdJ'
+      );
+      let server = mailConfigObj.server;
+      let port = mailConfigObj.port;
+      let secure = mailConfigObj.secure;
+      let tls = mailConfigObj.tls;
+      let userid = mailConfigObj.userid;
+      let password = mailConfigObj.password;
+      let emailServiceInstance = EmailOutService.getInstance();
+      bh.result = await emailServiceInstance.sendEmail(
+        {
+          server,
+          port,
+          secure,
+          tls,
+        },
+        {
+          userid,
+          password,
+          to: bh.payload.to,
+          subject: bh.payload.subject,
+          body: bh.payload.body,
+          cc: undefined,
+          bcc: undefined,
+          from: bh.payload.from,
+          html: bh.payload.ptag,
+          iCal: undefined,
+          routingOptions: undefined,
+          contentOptions: undefined,
+          securityOptions: undefined,
+          headerOptions: undefined,
+          attachments: undefined,
+        }
+      );
+      this.tracerService.sendData(spanInst, bh);
+      await this.sd_hEEKCQdEQYRpjxLb(bh, parentSpanInst);
+      //appendnew_next_sd_YzFYFO3W9YNHvTQs
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_YzFYFO3W9YNHvTQs',
+        spanInst,
+        'sd_YzFYFO3W9YNHvTQs'
+      );
+    }
+  }
+
+  async sd_hEEKCQdEQYRpjxLb(bh, parentSpanInst) {
+    try {
+      bh.web.res.status(200).send(bh.result);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_hEEKCQdEQYRpjxLb');
     }
   }
 
