@@ -16,7 +16,8 @@
             "NGFORAGE_MOBILE_DRIVER": "client",
             "mongodbUrl": "server",
             "gmail_userid": "server",
-            "gmail_appPassword": "server"
+            "gmail_appPassword": "server",
+            "local": "server"
         }
     },
     "dev": {
@@ -36,7 +37,8 @@
             "NGFORAGE_MOBILE_DRIVER": "INDEXED_DB",
             "mongodbUrl": "mongodb://localhost:27017/fnb",
             "gmail_userid": "edwardthupane80@gmail.com",
-            "gmail_appPassword": "kifk mzmq ifjh qbmj"
+            "gmail_appPassword": "kifk mzmq ifjh qbmj",
+            "local": "mongodb://localhost:27017"
         }
     },
     "prod": {
@@ -56,7 +58,8 @@
             "NGFORAGE_MOBILE_DRIVER": "INDEXED_DB",
             "mongodbUrl": "mongodb://localhost:27017/fnb",
             "gmail_userid": "edwardthupane80@gmail.com",
-            "gmail_appPassword": "kifk mzmq ifjh qbmj"
+            "gmail_appPassword": "kifk mzmq ifjh qbmj",
+            "local": "mongodb://localhost:27017"
         }
     }
 }
