@@ -668,6 +668,38 @@ export class auth {
         this.generatedMiddlewares
       )
     );
+
+    this.app['post'](
+      `${this.serviceBasePath}/`,
+      cookieParser(),
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'pre',
+        this.generatedMiddlewares
+      ),
+
+      async (req, res, next) => {
+        let bh: any = {};
+        try {
+          bh = this.sdService.__constructDefault(
+            { local: {}, input: {} },
+            req,
+            res,
+            next
+          );
+          let parentSpanInst = null;
+          bh = await this.sd_tUDN48AN90NHUTKL(bh, parentSpanInst);
+          //appendnew_next_sd_Q3EoU5e5mTgntbFC
+        } catch (e) {
+          return await this.errorHandler(bh, e, 'sd_Q3EoU5e5mTgntbFC');
+        }
+      },
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'post',
+        this.generatedMiddlewares
+      )
+    );
     //appendnew_flow_auth_HttpIn
   }
   //   service flows_auth
@@ -3592,6 +3624,38 @@ export class auth {
         spanInst,
         'sd_4Vov9krK6nwQH13w'
       );
+    }
+  }
+
+  async sd_tUDN48AN90NHUTKL(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_tUDN48AN90NHUTKL',
+      parentSpanInst
+    );
+    try {
+      bh.result = 'App is running';
+      this.tracerService.sendData(spanInst, bh);
+      await this.sd_1eFUS5HZikYHIx7u(bh, parentSpanInst);
+      //appendnew_next_sd_tUDN48AN90NHUTKL
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_tUDN48AN90NHUTKL',
+        spanInst,
+        'sd_tUDN48AN90NHUTKL'
+      );
+    }
+  }
+
+  async sd_1eFUS5HZikYHIx7u(bh, parentSpanInst) {
+    try {
+      bh.web.res.status(200).send(bh.result);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_1eFUS5HZikYHIx7u');
     }
   }
 
