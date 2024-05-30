@@ -35,7 +35,7 @@
             "webAppMountpoint": "web",
             "CLOCK_TOLERANCE": "5",
             "NGFORAGE_MOBILE_DRIVER": "INDEXED_DB",
-            "mongodbUrl": "mongodb://localhost:27017/fnb",
+            "mongodbUrl": "mongodb+srv://edwardthupane80:rvpiN5Hb0XFbAbM4@cluster0.hepycro.mongodb.net/fnb",
             "gmail_userid": "edwardthupane80@gmail.com",
             "gmail_appPassword": "kifk mzmq ifjh qbmj",
             "local": "mongodb://localhost:27017"
@@ -56,7 +56,7 @@
             "webAppMountpoint": "web",
             "CLOCK_TOLERANCE": "5",
             "NGFORAGE_MOBILE_DRIVER": "INDEXED_DB",
-            "mongodbUrl": "mongodb://localhost:27017/fnb",
+            "mongodbUrl": "mongodb+srv://edwardthupane80:rvpiN5Hb0XFbAbM4@cluster0.hepycro.mongodb.net/fnb",
             "gmail_userid": "edwardthupane80@gmail.com",
             "gmail_appPassword": "kifk mzmq ifjh qbmj",
             "local": "mongodb://localhost:27017"
