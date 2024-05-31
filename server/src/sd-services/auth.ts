@@ -446,7 +446,7 @@ export class auth {
     );
 
     this.app['get'](
-      `${this.serviceBasePath}/get-users:email`,
+      `${this.serviceBasePath}/get-users`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
         null,
