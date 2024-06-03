@@ -63,5 +63,31 @@
                 "transactions"
             ]
         }
+    },
+    "/pay": {
+        "post": {
+            "summary": "",
+            "description": "",
+            "consumes": [],
+            "produces": [],
+            "parameters": [],
+            "responses": {},
+            "tags": [
+                "transactions"
+            ]
+        }
+    },
+    "/get-pay/:email": {
+        "get": {
+            "summary": "",
+            "description": "",
+            "consumes": [],
+            "produces": [],
+            "parameters": [],
+            "responses": {},
+            "tags": [
+                "transactions"
+            ]
+        }
     }
 }
