@@ -1249,7 +1249,6 @@
         "acceptFileUpload": false,
         "useDataModel": false,
         "dataModelIsArray": false,
-        "uploadFileOptions": "",
         "erd": "",
         "erdName": "",
         "entity": "",
@@ -1293,7 +1292,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "bh.query = {\"email\":bh.input.body.email}",
+        "script": "bh.query = {\"email\":bh.input.params.email}\n\n",
         "functionName": "sd_IJ6ZHsulTw4p92Ng",
         "category": "Function",
         "x": 197,
@@ -1346,8 +1345,8 @@
         "pipeline": "",
         "functionName": "sd_R6jUQi6uOhsZPYTF",
         "category": "Storage",
-        "x": 277,
-        "y": 630.8020629882812,
+        "x": 285,
+        "y": 640,
         "wires": [
             [
                 "sd_lSCAJFSxnnSf9xDq"

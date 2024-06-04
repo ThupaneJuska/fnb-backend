@@ -761,7 +761,8 @@ export class transactions {
       parentSpanInst
     );
     try {
-      bh.query = { email: bh.input.body.email };
+      bh.query = { email: bh.input.params.email };
+
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_R6jUQi6uOhsZPYTF(bh, parentSpanInst);
       //appendnew_next_sd_IJ6ZHsulTw4p92Ng

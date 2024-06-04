@@ -5,7 +5,6 @@ let instance = null;
 
 import * as cookieParser from 'cookie-parser'; //_splitter_
 import { sep } from 'path'; //_splitter_
-import { Readable } from 'stream'; //_splitter_
 import { SDBaseService } from '../services/SDBaseService'; //_splitter_
 import { TracerService } from '../services/TracerService'; //_splitter_
 import log from '../utils/Logger'; //_splitter_
@@ -163,7 +162,7 @@ export class auth {
       this.sdService.multipartParser({
         type: 'path',
         path: 'file'.replace(/\\|\//g, sep),
-        options: [{ name: 'name', maxCount: 2 }],
+        options: [{ name: 'file', maxCount: 1 }],
       }),
 
       async (req, res, next) => {
@@ -876,6 +875,7 @@ export class auth {
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_tWvi321XyzGdzHq1(bh, parentSpanInst);
       bh = await this.sd_bphegCm8mwdh0GWH(bh, parentSpanInst);
+      bh = await this.sd_CwXq3P4628pEmjnA(bh, parentSpanInst);
       //appendnew_next_ifSuccess
       return bh;
     } catch (e) {
@@ -1069,6 +1069,68 @@ export class auth {
     }
   }
 
+  async sd_CwXq3P4628pEmjnA(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_CwXq3P4628pEmjnA',
+      parentSpanInst
+    );
+    try {
+      delete bh.body.title;
+      delete bh.body.message;
+      delete bh.body.read;
+      delete bh.body.createdDate;
+
+      bh.body['email'] = bh.input.body.email;
+      bh.body['transfers'] = 500000;
+      bh.body['payments'] = 350000;
+      bh.body['payAndClear'] = 35000;
+      bh.body['prepaid'] = 1000;
+      bh.body['sendMoney'] = 3000;
+      bh.body['vouchers'] = 1000;
+      bh.body['cardlessCashWithdrawal'] = 1500;
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_oly1sZSIRqopa5D6(bh, parentSpanInst);
+      //appendnew_next_sd_CwXq3P4628pEmjnA
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_CwXq3P4628pEmjnA',
+        spanInst,
+        'sd_CwXq3P4628pEmjnA'
+      );
+    }
+  }
+
+  async sd_oly1sZSIRqopa5D6(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_oly1sZSIRqopa5D6',
+      parentSpanInst
+    );
+    try {
+      bh.result = await MongoPersistance.getInstance().insertOne(
+        'sd_ajFrSs3mQRYSN97Z',
+        'limits',
+        bh.body,
+        bh.option,
+        bh.option
+      );
+      this.tracerService.sendData(spanInst, bh);
+      await this.sd_TVW1YChwcueLIbBM(bh, parentSpanInst);
+      //appendnew_next_sd_oly1sZSIRqopa5D6
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_oly1sZSIRqopa5D6',
+        spanInst,
+        'sd_oly1sZSIRqopa5D6'
+      );
+    }
+  }
+
   async sd_o8c0l4D11uvNKdIC(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
       'sd_o8c0l4D11uvNKdIC',
@@ -1171,7 +1233,7 @@ export class auth {
       parentSpanInst
     );
     try {
-      bh.file = bh.input.files.name[0];
+      bh.file = bh.input.files.file[0];
       // bh.file['ID'] = new Date().getTime();
       console.log("Let's see what the file holds", bh.file);
       this.tracerService.sendData(spanInst, bh);
@@ -1242,15 +1304,8 @@ export class auth {
 
   async sd_BkTEbjv46m5Enup2(bh, parentSpanInst) {
     try {
-      const readable = new Readable();
-      readable._read = () => {}; // _read is required but you can noop it
-      // setting buffer
-      readable.push(bh.file);
-      readable.push(null);
-      // setting status
-      bh.web.res.status(200);
-      readable.pipe(bh.web.res);
-      bh.readable = readable;
+      bh.web.res.status(200).download(bh.file.path);
+
       return bh;
     } catch (e) {
       return await this.errorHandler(bh, e, 'sd_BkTEbjv46m5Enup2');
