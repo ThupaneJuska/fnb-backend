@@ -3027,6 +3027,9 @@ export class auth {
     try {
       console.log('Error Error');
       bh.status = 404;
+      bh.result = {
+        message: "User don't exist",
+      };
       this.tracerService.sendData(spanInst, bh);
       await this.sd_olfV7ccYpH7LQ2CJ(bh, parentSpanInst);
       //appendnew_next_sd_Gznm98dxQtDk93Lf
@@ -3130,14 +3133,14 @@ export class auth {
     );
     try {
       bh.result = bh.result;
-      bh.filter = { _id: bh.input.params._id };
+      bh.filter = { email: bh.input.params.email };
       bh.data;
       const data = bh.result.map((_data) => {
-        return _data._id;
+        return _data.email;
       });
 
       for (let i = 0; i <= data.length - 1; i++) {
-        if (data[i] == bh.filter._id) {
+        if (data[i] == bh.filter.email) {
           console.log('finally !!!', bh.result[i]);
           bh.data = bh.result[i];
         }
