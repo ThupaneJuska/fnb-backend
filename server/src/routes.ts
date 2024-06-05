@@ -1,4 +1,6 @@
 //CORE_REFERENCE_IMPORTS
+//CORE_REFERENCE_IMPORT-reset_password-SSD_SERVICE_ID_sd_iMKqWiWI0WVpbwzm
+import { reset_password as SSD_SERVICE_ID_sd_iMKqWiWI0WVpbwzm } from './sd-services/reset_password';
 //CORE_REFERENCE_IMPORT-limits-SSD_SERVICE_ID_sd_9tX9GsWpH4qrccZC
 import { limits as SSD_SERVICE_ID_sd_9tX9GsWpH4qrccZC } from './sd-services/limits';
 //CORE_REFERENCE_IMPORT-notification-SSD_SERVICE_ID_sd_scXj4UlsUXNtV6Qc
@@ -10,6 +12,8 @@ import { auth as SSD_SERVICE_ID_sd_rnBmVBMNMAATcuPX } from './sd-services/auth';
 
 export const UserRoutes = [
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-reset_password-SSD_SERVICE_ID_sd_iMKqWiWI0WVpbwzm
+SSD_SERVICE_ID_sd_iMKqWiWI0WVpbwzm,
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-limits-SSD_SERVICE_ID_sd_9tX9GsWpH4qrccZC
 SSD_SERVICE_ID_sd_9tX9GsWpH4qrccZC,
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-notification-SSD_SERVICE_ID_sd_scXj4UlsUXNtV6Qc

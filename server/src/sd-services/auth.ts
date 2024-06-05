@@ -2305,13 +2305,13 @@ export class auth {
   async sendOtp(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan('sendOtp', parentSpanInst);
     try {
-      const otp = bh.input.body.otp;
+      bh.otp = bh.input.body.otp;
       bh.filter = { email: bh.input.body['email'] };
-
       bh.input.body = {
         ...bh.result[0],
       };
-      bh.input.body.OTP = otp;
+
+      bh.input.body.OTP = bh.otp;
       bh.body = { $set: bh.input.body };
 
       bh.payload = {
@@ -2325,7 +2325,7 @@ export class auth {
 
       bh.status = 200;
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_CsqlVcyusuyUG0DL(bh, parentSpanInst);
+      bh = await this.sd_Q3iVDqsSlXn9rilD(bh, parentSpanInst);
       //appendnew_next_sendOtp
       return bh;
     } catch (e) {
@@ -2339,38 +2339,9 @@ export class auth {
     }
   }
 
-  async sd_CsqlVcyusuyUG0DL(bh, parentSpanInst) {
+  async sd_Q3iVDqsSlXn9rilD(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_CsqlVcyusuyUG0DL',
-      parentSpanInst
-    );
-    try {
-      bh.result = await MongoPersistance.getInstance().findOneAndUpdate(
-        'sd_ajFrSs3mQRYSN97Z',
-        'users',
-        bh.filter,
-        bh.body,
-        bh.option,
-        bh.option
-      );
-      this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_DrhBAmxaKnEq08Pe(bh, parentSpanInst);
-      //appendnew_next_sd_CsqlVcyusuyUG0DL
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_CsqlVcyusuyUG0DL',
-        spanInst,
-        'sd_CsqlVcyusuyUG0DL'
-      );
-    }
-  }
-
-  async sd_DrhBAmxaKnEq08Pe(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'sd_DrhBAmxaKnEq08Pe',
+      'sd_Q3iVDqsSlXn9rilD',
       parentSpanInst
     );
     try {
@@ -2385,7 +2356,7 @@ export class auth {
       let userid = mailConfigObj.userid;
       let password = mailConfigObj.password;
       let emailServiceInstance = EmailOutService.getInstance();
-      bh.result = await emailServiceInstance.sendEmail(
+      bh.results = await emailServiceInstance.sendEmail(
         {
           server,
           port,
@@ -2407,20 +2378,49 @@ export class auth {
           contentOptions: undefined,
           securityOptions: undefined,
           headerOptions: undefined,
-          attachments: [],
+          attachments: undefined,
         }
       );
       this.tracerService.sendData(spanInst, bh);
-      await this.sd_bJysZ30bupy8asBc(bh, parentSpanInst);
-      //appendnew_next_sd_DrhBAmxaKnEq08Pe
+      bh = await this.sd_CsqlVcyusuyUG0DL(bh, parentSpanInst);
+      //appendnew_next_sd_Q3iVDqsSlXn9rilD
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_DrhBAmxaKnEq08Pe',
+        'sd_Q3iVDqsSlXn9rilD',
         spanInst,
-        'sd_DrhBAmxaKnEq08Pe'
+        'sd_Q3iVDqsSlXn9rilD'
+      );
+    }
+  }
+
+  async sd_CsqlVcyusuyUG0DL(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_CsqlVcyusuyUG0DL',
+      parentSpanInst
+    );
+    try {
+      bh.result = await MongoPersistance.getInstance().findOneAndUpdate(
+        'sd_ajFrSs3mQRYSN97Z',
+        'users',
+        bh.filter,
+        bh.body,
+        bh.option,
+        bh.option
+      );
+      this.tracerService.sendData(spanInst, bh);
+      await this.sd_bJysZ30bupy8asBc(bh, parentSpanInst);
+      //appendnew_next_sd_CsqlVcyusuyUG0DL
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_CsqlVcyusuyUG0DL',
+        spanInst,
+        'sd_CsqlVcyusuyUG0DL'
       );
     }
   }
@@ -2444,6 +2444,8 @@ export class auth {
       bh.result = {
         message: 'User dont exist',
       };
+
+      console.log('user dnt exist');
       this.tracerService.sendData(spanInst, bh);
       await this.sd_bJysZ30bupy8asBc(bh, parentSpanInst);
       //appendnew_next_sd_jcLO4gylDGM9MCBM
