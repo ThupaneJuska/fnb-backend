@@ -38,7 +38,7 @@
             ]
         }
     },
-    "/get-ewallet/:email": {
+    "/get-electricity/:email": {
         "get": {
             "summary": "",
             "description": "",
@@ -53,6 +53,19 @@
     },
     "/ewallet": {
         "post": {
+            "summary": "",
+            "description": "",
+            "consumes": [],
+            "produces": [],
+            "parameters": [],
+            "responses": {},
+            "tags": [
+                "transactions"
+            ]
+        }
+    },
+    "/get-ewallet/:email": {
+        "get": {
             "summary": "",
             "description": "",
             "consumes": [],

@@ -178,7 +178,7 @@ export class transactions {
     );
 
     this.app['get'](
-      `${this.serviceBasePath}/get-ewallet/:email`,
+      `${this.serviceBasePath}/get-electricity/:email`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
         null,
@@ -940,7 +940,7 @@ export class transactions {
           contentOptions: undefined,
           securityOptions: undefined,
           headerOptions: undefined,
-          attachments: undefined,
+          attachments: [],
         }
       );
       this.tracerService.sendData(spanInst, bh);
