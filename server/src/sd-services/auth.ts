@@ -509,7 +509,7 @@ export class auth {
     );
 
     this.app['get'](
-      `${this.serviceBasePath}/get-user/:_id`,
+      `${this.serviceBasePath}/get-user/:email`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
         null,
