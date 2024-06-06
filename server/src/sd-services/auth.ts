@@ -1488,7 +1488,7 @@ export class auth {
     try {
       bh.search = {
         query: { email: bh.input.body.email },
-        collection: 'users',
+        collection: 'Admins',
       };
 
       bh.input.body['_id'] = new Date().getTime();
@@ -1610,7 +1610,7 @@ export class auth {
       bh.input.body['password'] = hashedPassword;
       bh.body = bh.input.body;
 
-      console.log('Body', bh.body);
+      console.log('Body', bh.input.body.zaka);
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_T3v962reCoKtkUSG(bh, parentSpanInst);
       //appendnew_next_ifSucceess
@@ -2191,7 +2191,7 @@ export class auth {
           contentOptions: undefined,
           securityOptions: undefined,
           headerOptions: undefined,
-          attachments: undefined,
+          attachments: [],
         }
       );
       this.tracerService.sendData(spanInst, bh);
@@ -2378,7 +2378,7 @@ export class auth {
           contentOptions: undefined,
           securityOptions: undefined,
           headerOptions: undefined,
-          attachments: undefined,
+          attachments: [],
         }
       );
       this.tracerService.sendData(spanInst, bh);
